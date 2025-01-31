@@ -1,3 +1,127 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+    --primary-color: #4f46e5;
+    --secondary-color: #9333ea;
+    --background-color: #ffffff;
+    --text-color: #1f2937;
+  }
+  
+  .dark {
+    --primary-color: #6366f1;
+    --secondary-color: #a855f7;
+    --background-color: #1f2937;
+    --text-color: #f3f4f6;
+  }
+
+  .p-button {
+    background-color: var(--primary-color) !important;
+    border-color: var(--primary-color) !important;
+    color: white !important;
+  }
+  
+  .p-button:hover {
+    background-color: var(--secondary-color) !important;
+    border-color: var(--secondary-color) !important;
+  }
+  
+  .p-dialog {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+  }
+  
+  .p-inputtext {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+    border: 1px solid var(--primary-color) !important;
+  }
+  
+  .p-datatable {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+  }
+  
+  .p-datatable th {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+  }
+  
+  .p-datatable tbody tr {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+  }
 
 
+/* ✅ Configurar el fondo del paginador */
+.p-paginator {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+/* ✅ Cambiar el color de los botones de paginación */
+.p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* ✅ Botones Anterior/Siguiente en modo oscuro */
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last {
+    background-color: var(--background-color) !important;
+    color: var(--text-color) !important;
+}
+
+.p-paginator .p-paginator-first:hover,
+.p-paginator .p-paginator-prev:hover,
+.p-paginator .p-paginator-next:hover,
+.p-paginator .p-paginator-last:hover {
+    background-color: var(--primary-color) !important;
+    color: white !important;
+}
+
+/* ✅ Ajustes para modo oscuro */
+.dark .p-paginator {
+    background-color: #111827 !important; /* Fondo oscuro */
+    color: #f3f4f6 !important; /* Texto claro */
+}
+
+.dark .p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+}
+
+.dark .p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+.dark .p-paginator .p-paginator-first,
+.dark .p-paginator .p-paginator-prev,
+.dark .p-paginator .p-paginator-next,
+.dark .p-paginator .p-paginator-last {
+    background-color: #1f2937 !important;
+    color: #f3f4f6 !important;
+}
+
+.dark .p-paginator .p-paginator-first:hover,
+.dark .p-paginator .p-paginator-prev:hover,
+.dark .p-paginator .p-paginator-next:hover,
+.dark .p-paginator .p-paginator-last:hover {
+    background-color: var(--secondary-color) !important;
+    color: white !important;
+}
+
+
+.dark .p-select {
+
+    background: black;
+
+}
