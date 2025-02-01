@@ -8,6 +8,7 @@ import ErrorMessage from "@/components/ErrorMessage.vue";
 import DeleteConfirmationDialog from "@/components/DeleteUserConfirmationDialog.vue";
 import { computed } from "vue";
 import Header from "@/components/Header.vue";
+import CameraCapture from "@/components/CameraCapture.vue";
 
 const { filteredUsers, searchQuery, error, loading, deleteUser } = useUsers();
 const { showModal, userToDelete, isDeleting, confirmDelete, proceedDelete } =
@@ -42,6 +43,7 @@ const userColumns = [
     <!-- 🔹 Tabla con Filtro -->
     <div v-else>
       <h1 class="text-center text-2xl font-semibold my-4">Página Principal</h1>
+      <CameraCapture />
       <SearchBar v-model="searchQuery" />
       <div class="shadow-md rounded-xl overflow-hidden border border-gray-200">
         <DataTable
