@@ -7,7 +7,7 @@ import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ErrorMessage from "@/components/ErrorMessage.vue";
 import DeleteConfirmationDialog from "@/components/DeleteUserConfirmationDialog.vue";
 import { computed } from "vue";
-import DarkModeToggle from "@/components/DarkModeToggle.vue";
+import Header from "@/components/Header.vue";
 
 const { filteredUsers, searchQuery, error, loading, deleteUser } = useUsers();
 const { showModal, userToDelete, isDeleting, confirmDelete, proceedDelete } =
@@ -31,6 +31,7 @@ const userColumns = [
 </script>
 
 <template>
+  <Header />
   <div class="container mx-auto p-6">
     <!-- 🔹 Spinner de Carga -->
     <LoadingSpinner v-if="loading" />
@@ -41,11 +42,8 @@ const userColumns = [
     <!-- 🔹 Tabla con Filtro -->
     <div v-else>
       <h1 class="text-center text-2xl font-semibold my-4">Página Principal</h1>
-      <DarkModeToggle />
       <SearchBar v-model="searchQuery" />
-      <div
-        class="bg-white shadow-md rounded-xl overflow-hidden border border-gray-200"
-      >
+      <div class="shadow-md rounded-xl overflow-hidden border border-gray-200">
         <DataTable
           :value="processedUsers"
           :columns="userColumns"

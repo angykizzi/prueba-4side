@@ -13,8 +13,8 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Dialog v-model:visible="props.showModal" modal header="Confirmación" class="w-96">
-    <p class="text-lg text-gray-700">
+  <Dialog v-model:visible="props.showModal" modal header="Confirmación" class="w-96" :closable="false">
+    <p class="text-lg">
       ¿Está seguro que desea eliminar a
       <span class="font-bold">{{ props.userToDelete?.nombreCompleto }}</span>?
     </p>

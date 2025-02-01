@@ -32,7 +32,7 @@ const rowsPerPage = 10;
     <!-- 🔹 Número de Registro -->
     <Column header="#" class="text-center">
       <template #body="slotProps">
-        <span class="text-gray-700 font-medium">
+        <span class="">
           {{ first + slotProps.index + 1 }}
         </span>
       </template>
@@ -46,7 +46,7 @@ const rowsPerPage = 10;
       :header="col.header"
     >
       <template #body="slotProps">
-        <span class="text-gray-900 font-medium">
+        <span class="">
           {{ slotProps.data[col.field] }}
         </span>
       </template>
@@ -66,7 +66,7 @@ const rowsPerPage = 10;
 
     <!-- ✅ Mensaje cuando no hay datos -->
     <template #empty>
-      <div class="text-center text-gray-500 py-4">
+      <div class="text-center py-4">
         No se encontraron coincidencias
       </div>
     </template>

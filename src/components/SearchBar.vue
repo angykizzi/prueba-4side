@@ -16,7 +16,7 @@ const emit = defineEmits(["update:modelValue"]);
           emit('update:modelValue', ($event.target as HTMLInputElement).value)
         "
         placeholder="Buscar por Nombre"
-        class="p-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500"
+        class="p-2 border rounded-lg focus:ring-2 focus:ring-blue-500"
       />
     </span>
   </div>
