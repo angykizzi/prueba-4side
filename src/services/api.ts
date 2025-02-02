@@ -1,7 +1,6 @@
 import axios from "axios";
 
-const API_URL =
-  "https://www.4sides.com.mx/api/prueba-tecnica/usuarios/index?results=50";
+const API_URL = import.meta.env.VITE_API_URL;
 
 export const getUsers = async () => {
   try {

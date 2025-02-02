@@ -2,6 +2,12 @@
 
 Este proyecto es una aplicación desarrollada con Vue 3 y Vite. Utiliza PrimeVue para componentes UI y TailwindCSS para estilos.
 
+Crea un archivo .env en la raíz del proyecto, se debe colocar el endpoint dado para la prueba.
+
+VITE_API_URL=URL
+
+Ver .env.example como ejemplo.
+
 ## Configuración del Proyecto
 
 ```sh
