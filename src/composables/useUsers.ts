@@ -8,7 +8,6 @@ export function useUsers() {
   const loading: Ref<boolean> = ref(true);
   const searchQuery = ref("");
 
-  // ✅ Función para obtener los usuarios de la API
   const fetchUsers = async () => {
     loading.value = true;
     const { data, error: apiError } = await getUsers();
@@ -22,7 +21,6 @@ export function useUsers() {
 
   onMounted(fetchUsers);
 
-  // ✅ Función para eliminar un usuario
   const deleteUser = (userToDelete: User) => {
     users.value = users.value.filter(
       (user) => user.usuarioEmail !== userToDelete.usuarioEmail
@@ -31,7 +29,6 @@ export function useUsers() {
     console.log("Usuario eliminado:", userToDelete);
   };
 
-  // ✅ Filtrar usuarios por Nombre Completo
   const filteredUsers = computed(() => {
     return users.value.filter((user) =>
       `${user.usuarioNombre} ${user.usuarioApellidoPaterno} ${user.usuarioApellidoMaterno}`

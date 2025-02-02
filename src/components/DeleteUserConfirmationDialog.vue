@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
-import { defineProps } from "vue";
 
 const props = defineProps<{
   showModal: boolean;

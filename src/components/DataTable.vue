@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
-import { defineProps, defineEmits, ref } from "vue";
-import { Trash2 } from "lucide-vue-next"; // 📌 Icono de trash
+import { ref } from "vue";
+import { Trash2, Camera } from "lucide-vue-next";
 
 defineProps<{
   value: any[];
   columns: { field: string; header: string }[];
 }>();
 
-const emit = defineEmits(["deleteRow"]);
+const emit = defineEmits(["deleteRow", "openCamera"]);
 
 const first = ref(0);
 const rowsPerPage = 10;
@@ -53,22 +53,31 @@ const rowsPerPage = 10;
     </Column>
 
     <!-- 🔹 Acciones -->
-    <Column header="Acciones" class="text-center">
+    <Column header="Acciones" class="text-right">
       <template #body="slotProps">
-        <button
-          @click="emit('deleteRow', slotProps.data)"
-          class="p-2 text-red-500 hover:text-red-700 transition cursor-pointer"
-        >
-          <Trash2 :size="18" />
-        </button>
+        <div class="flex gap-3">
+          <!-- 🗑️ Botón de eliminar -->
+          <button
+            @click="emit('deleteRow', slotProps.data)"
+            class="p-2 text-red-500 hover:text-red-700 transition cursor-pointer"
+          >
+            <Trash2 :size="18" />
+          </button>
+
+          <!-- 📷 Botón de abrir cámara -->
+          <button
+            @click="emit('openCamera', slotProps.data)"
+            class="p-2 text-blue-500 hover:text-blue-700 transition cursor-pointer"
+          >
+            <Camera :size="18" />
+          </button>
+        </div>
       </template>
     </Column>
 
     <!-- ✅ Mensaje cuando no hay datos -->
     <template #empty>
-      <div class="text-center py-4">
-        No se encontraron coincidencias
-      </div>
+      <div class="text-center py-4">No se encontraron coincidencias</div>
     </template>
   </DataTable>
 </template>

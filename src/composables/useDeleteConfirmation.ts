@@ -5,13 +5,11 @@ export function useDeleteConfirmation() {
   const userToDelete = ref<any>(null);
   const isDeleting = ref(false);
 
-  // ✅ Función para abrir el modal y almacenar el usuario a eliminar
   const confirmDelete = (user: any) => {
     userToDelete.value = user;
     showModal.value = true;
   };
 
-  // ✅ Función para proceder con la eliminación con Spinner
   const proceedDelete = async (deleteUser: (user: any) => void) => {
     isDeleting.value = true;
     setTimeout(() => {

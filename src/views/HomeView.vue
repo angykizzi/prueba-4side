@@ -1,60 +1,45 @@
 <script setup lang="ts">
 import { useUsers } from "@/composables/useUsers";
 import { useDeleteConfirmation } from "@/composables/useDeleteConfirmation";
+import { useCamera } from "@/composables/useCamera";
 import DataTable from "@/components/DataTable.vue";
 import SearchBar from "@/components/SearchBar.vue";
 import LoadingSpinner from "@/components/LoadingSpinner.vue";
 import ErrorMessage from "@/components/ErrorMessage.vue";
 import DeleteConfirmationDialog from "@/components/DeleteUserConfirmationDialog.vue";
-import { computed } from "vue";
 import Header from "@/components/Header.vue";
-import CameraCapture from "@/components/CameraCapture.vue";
+import CameraModal from "@/components/CameraModal.vue";
+import { computed } from "vue";
+import { userColumns } from "@/constants";
+import { formatUsers } from "@/utils/formatters";
 
 const { filteredUsers, searchQuery, error, loading, deleteUser } = useUsers();
 const { showModal, userToDelete, isDeleting, confirmDelete, proceedDelete } =
   useDeleteConfirmation();
+const { selectedUser, showCameraModal, openCamera } = useCamera();
 
-// ✅ Crear un `computed` para modificar los datos sin tocar el componente reutilizable
-const processedUsers = computed(() =>
-  filteredUsers.value.map((user) => ({
-    ...user,
-    nombreCompleto:
-      `${user.usuarioNombre} ${user.usuarioApellidoPaterno} ${user.usuarioApellidoMaterno}`.trim(),
-  }))
-);
-
-// ✅ Definir las columnas de la tabla
-const userColumns = [
-  { field: "nombreCompleto", header: "Nombre Completo" },
-  { field: "usuarioTelefono", header: "Teléfono" },
-  { field: "usuarioEmail", header: "Correo Electrónico" },
-];
+const processedUsers = computed(() => formatUsers(filteredUsers.value));
 </script>
 
 <template>
   <Header />
   <div class="container mx-auto p-6">
-    <!-- 🔹 Spinner de Carga -->
     <LoadingSpinner v-if="loading" />
-
-    <!-- 🔹 Mensaje de Error -->
     <ErrorMessage v-else-if="error" :message="error" />
-
-    <!-- 🔹 Tabla con Filtro -->
+    
     <div v-else>
       <h1 class="text-center text-2xl font-semibold my-4">Página Principal</h1>
-      <CameraCapture />
       <SearchBar v-model="searchQuery" />
       <div class="shadow-md rounded-xl overflow-hidden border border-gray-200">
         <DataTable
           :value="processedUsers"
           :columns="userColumns"
           @deleteRow="confirmDelete"
+          @openCamera="openCamera"
         />
       </div>
     </div>
 
-    <!-- 🔹 Modal de Confirmación -->
     <DeleteConfirmationDialog
       :showModal="showModal"
       :userToDelete="userToDelete"
@@ -62,5 +47,6 @@ const userColumns = [
       :proceedDelete="() => proceedDelete(deleteUser)"
       :closeDialog="() => (showModal = false)"
     />
+    <CameraModal v-model:visible="showCameraModal" :user="selectedUser" />
   </div>
 </template>
